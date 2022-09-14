@@ -7,12 +7,11 @@ A disconnection event can happen in two ways:
 - or network connection is lost
 The desired behavior is that an ib_insync script can automatically re-establish the connection after TWS or network comes back.
 
-A suggestion from IB_INSYNC forum:
-'''
-https://github.com/erdewit/ib_insync/issues/469
+A suggestion from [IB_INSYNC forum](https://github.com/erdewit/ib_insync/issues/469) goes like this:
+```
 ib = IB()
 ib.disconnectedEvent += lambda: asyncio.create_task(reconnect())
-'''
+```
 
 However In the current solution we try to solve both TWS restart and connection loss in a stable way. 
 - Exception handling performs a disconnection and reconnection using the ib library function.
